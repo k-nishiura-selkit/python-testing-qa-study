@@ -1,0 +1,9 @@
+cohort,category,count,repositories,rate
+Pre-AI,Neither,8100,9448,0.857324301439458
+Pre-AI,Tests only,897,9448,0.0949407281964437
+Pre-AI,Other QA only,232,9448,0.024555461473327687
+Pre-AI,Tests + other QA,219,9448,0.023179508890770535
+Contemporary,Neither,8100,10000,0.81
+Contemporary,Tests only,1198,10000,0.1198
+Contemporary,Other QA only,260,10000,0.026
+Contemporary,Tests + other QA,442,10000,0.0442

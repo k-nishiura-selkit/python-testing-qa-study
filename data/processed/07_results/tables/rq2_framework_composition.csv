@@ -1,0 +1,9 @@
+cohort,framework_group,count,test_repositories,rate
+Pre-AI,pytest only,266,1265,0.21027667984189724
+Pre-AI,unittest only,436,1265,0.34466403162055337
+Pre-AI,pytest + unittest,71,1265,0.05612648221343874
+Pre-AI,neither detected,492,1265,0.38893280632411065
+Contemporary,pytest only,362,1640,0.22073170731707317
+Contemporary,unittest only,299,1640,0.1823170731707317
+Contemporary,pytest + unittest,208,1640,0.12682926829268293
+Contemporary,neither detected,771,1640,0.47012195121951217

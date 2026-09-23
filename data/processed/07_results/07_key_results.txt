@@ -1,0 +1,117 @@
+==============================================================================
+PAPER RESULT ANALYSIS
+==============================================================================
+
+RQ1: TEST PREVALENCE
+------------------------------------------------------------------------------
+Broad          Pre-AI 1,325/10,000 (13.25%)   Contemporary 1,698/10,000 (16.98%)   Diff +3.73 pp
+Conventional   Pre-AI 1,265/10,000 (12.65%)   Contemporary 1,640/10,000 (16.40%)   Diff +3.75 pp [+2.77, +4.73]
+Strict         Pre-AI 1,002/10,000 (10.02%)   Contemporary 1,294/10,000 (12.94%)   Diff +2.92 pp
+
+RQ2: TESTING FOUNDATIONS
+------------------------------------------------------------------------------
+Quantity:
+  Test artifact files    Pre-AI 2.00 [1.00, 5.00]   Contemporary 2.00 [1.00, 5.00]   Cliff's delta 0.005
+  Test artifact LOC      Pre-AI 132.00 [41.00, 364.00]   Contemporary 156.50 [53.00, 505.75]   Cliff's delta 0.080
+  Test LOC ratio         Pre-AI 0.16 [0.07, 0.34]   Contemporary 0.14 [0.05, 0.32]   Cliff's delta -0.049
+
+Structure:
+  Production-code reference    Pre-AI 909/1,265 (71.86%)   Contemporary 1,133/1,640 (69.09%)   Diff -2.77 pp
+  Explicit oracle              Pre-AI 908/1,265 (71.78%)   Contemporary 1,072/1,640 (65.37%)   Diff -6.41 pp
+
+Testing practice:
+  pytest                       Pre-AI 337/1,265 (26.64%)   Contemporary 570/1,640 (34.76%)   Diff +8.12 pp
+  unittest                     Pre-AI 507/1,265 (40.08%)   Contemporary 507/1,640 (30.91%)   Diff -9.16 pp
+  Exception testing            Pre-AI 272/1,265 (21.50%)   Contemporary 360/1,640 (21.95%)   Diff +0.45 pp
+  Mocking                      Pre-AI 189/1,265 (14.94%)   Contemporary 410/1,640 (25.00%)   Diff +10.06 pp
+
+Automation:
+  CI test execution            Pre-AI 181/1,265 (14.31%)   Contemporary 230/1,640 (14.02%)   Diff -0.28 pp
+  Coverage tooling             Pre-AI 204/1,265 (16.13%)   Contemporary 313/1,640 (19.09%)   Diff +2.96 pp
+
+CI + coverage overlap:
+  Pre-AI         98/1,265 (7.75%)
+  Contemporary   105/1,640 (6.40%)
+
+pytest / unittest composition:
+  pytest only              Pre-AI 266/1,265 (21.03%)   Contemporary 362/1,640 (22.07%)
+  unittest only            Pre-AI 436/1,265 (34.47%)   Contemporary 299/1,640 (18.23%)
+  pytest + unittest        Pre-AI 71/1,265 (5.61%)   Contemporary 208/1,640 (12.68%)
+  neither detected         Pre-AI 492/1,265 (38.89%)   Contemporary 771/1,640 (47.01%)
+
+RQ3: REPOSITORY CHARACTERISTICS
+------------------------------------------------------------------------------
+
+Python LOC:
+  <=109        Pre-AI 3.61%   Contemporary 4.12%   Diff +0.50 pp
+  110-332      Pre-AI 6.67%   Contemporary 7.40%   Diff +0.73 pp
+  333-1036     Pre-AI 13.82%   Contemporary 15.06%   Diff +1.24 pp
+  >1036        Pre-AI 30.95%   Contemporary 39.04%   Diff +8.09 pp
+
+Commit count:
+  1            Pre-AI 17.16%   Contemporary 19.95%   Diff +2.79 pp
+  2-5          Pre-AI 7.12%   Contemporary 9.45%   Diff +2.33 pp
+  6-20         Pre-AI 10.35%   Contemporary 17.21%   Diff +6.86 pp
+  >20          Pre-AI 25.44%   Contemporary 30.80%   Diff +5.36 pp
+
+Development span:
+  <=1 day      Pre-AI 7.91%   Contemporary 11.36%   Diff +3.45 pp
+  >1-7 days    Pre-AI 11.70%   Contemporary 18.64%   Diff +6.94 pp
+  >7-30 days   Pre-AI 14.26%   Contemporary 19.28%   Diff +5.02 pp
+  >30 days     Pre-AI 17.71%   Contemporary 24.60%   Diff +6.90 pp
+
+Human contributors:
+  1            Pre-AI 10.72%   Contemporary 14.68%   Diff +3.96 pp
+  2            Pre-AI 15.96%   Contemporary 23.28%   Diff +7.32 pp
+  3-5          Pre-AI 23.40%   Contemporary 28.03%   Diff +4.63 pp
+
+Contributor distribution:
+  1    Pre-AI 7,405 (74.05%)   Contemporary 8,248 (82.48%)
+  2    Pre-AI 1,830 (18.30%)   Contemporary 1,306 (13.06%)
+  3-5  Pre-AI 765 (7.65%)   Contemporary 446 (4.46%)
+
+AI-explicit subset (exploratory):
+  Conventional tests       Contemporary 1,640/10,000 (16.40%)   AI-explicit 13/30 (43.33%)
+  Strict tests             Contemporary 1,294/10,000 (12.94%)   AI-explicit 12/30 (40.00%)
+  Other QA                 Contemporary 702/10,000 (7.02%)   AI-explicit 8/30 (26.67%)
+  Python LOC               Contemporary median 332.00 (n=10,000)   AI-explicit median 1920.50 (n=30)
+  Commit count             Contemporary median 5.00 (n=9,996)   AI-explicit median 14.50 (n=30)
+  Development span days    Contemporary median 0.88 (n=9,996)   AI-explicit median 29.08 (n=30)
+
+RQ4: NON-TESTING QA
+------------------------------------------------------------------------------
+Linting                      Pre-AI 497/10,000 (4.97%)   Contemporary 579/10,000 (5.79%)   Diff +0.82 pp
+Static type checking         Pre-AI 81/10,000 (0.81%)   Contemporary 291/10,000 (2.91%)   Diff +2.10 pp
+Formatting                   Pre-AI 131/10,000 (1.31%)   Contemporary 455/10,000 (4.55%)   Diff +3.24 pp
+Any non-testing QA           Pre-AI 543/10,000 (5.43%)   Contemporary 702/10,000 (7.02%)   Diff +1.59 pp
+Automated non-testing QA     Pre-AI 158/10,000 (1.58%)   Contemporary 257/10,000 (2.57%)   Diff +0.99 pp
+
+Tests x other QA:
+  Neither                  Pre-AI 84.69%   Contemporary 81.00%
+  Tests only               Pre-AI 9.88%   Contemporary 11.98%
+  Other QA only            Pre-AI 2.66%   Contemporary 2.60%
+  Tests + other QA         Pre-AI 2.77%   Contemporary 4.42%
+
+Tests x automated QA:
+  Neither                  Pre-AI 86.75%   Contemporary 82.90%
+  Tests only               Pre-AI 11.67%   Contemporary 14.53%
+  Automated QA only        Pre-AI 0.60%   Contemporary 0.70%
+  Tests + automated QA     Pre-AI 0.98%   Contemporary 1.87%
+
+Neither tests nor non-testing QA by Python LOC:
+  <=109        Pre-AI 2,516/2,657 (94.69%)   Contemporary 2,375/2,503 (94.89%)
+  110-332      Pre-AI 2,461/2,714 (90.68%)   Contemporary 2,261/2,501 (90.40%)
+  333-1036     Pre-AI 2,149/2,597 (82.75%)   Contemporary 2,044/2,496 (81.89%)
+  >1036        Pre-AI 1,343/2,032 (66.09%)   Contemporary 1,420/2,500 (56.80%)
+
+SENSITIVITY: PRE-AI LAST COMMIT < 2022-11-30
+------------------------------------------------------------------------------
+Restricted Pre-AI repositories: 9,448
+Broad          Pre-AI 1,169/9,448 (12.37%)   Contemporary 1,698/10,000 (16.98%)   Diff +4.61 pp
+Conventional   Pre-AI 1,116/9,448 (11.81%)   Contemporary 1,640/10,000 (16.40%)   Diff +4.59 pp
+Strict         Pre-AI 877/9,448 (9.28%)   Contemporary 1,294/10,000 (12.94%)   Diff +3.66 pp
+
+Notes:
+- AI-explicit results are exploratory and do not estimate overall AI use.
+- The sensitivity cutoff uses default-branch last_commit_date.
+- No causal interpretation of period differences is made.

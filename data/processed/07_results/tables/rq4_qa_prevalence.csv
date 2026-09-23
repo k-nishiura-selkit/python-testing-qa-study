@@ -1,0 +1,6 @@
+metric,column,n_pre_ai,count_pre_ai,rate_pre_ai,n_contemporary,count_contemporary,rate_contemporary,difference
+Linting,has_linting,10000,497,0.0497,10000,579,0.0579,0.008199999999999999
+Static type checking,has_type_checking,10000,81,0.0081,10000,291,0.0291,0.021
+Formatting,has_formatting,10000,131,0.0131,10000,455,0.0455,0.0324
+Any non-testing QA,has_other_qa,10000,543,0.0543,10000,702,0.0702,0.015899999999999997
+Automated non-testing QA,has_other_qa_automated,10000,158,0.0158,10000,257,0.0257,0.009899999999999999

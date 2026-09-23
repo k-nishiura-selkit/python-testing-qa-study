@@ -1,0 +1,194 @@
+github:
+  api_version: "2022-11-28"
+  search_interval_seconds: 2.2
+  core_interval_seconds: 0.8
+  max_retries: 10
+
+sampling:
+  random_seed: 20260819
+  days_per_month: 2
+
+periods:
+  pre_ai:
+    start: "2019-01-01"
+    end: "2020-12-31"
+
+  contemporary:
+    start: "2024-01-01"
+    end: "2025-12-31"
+
+selection:
+  language: "Python"
+  exclude_forks: true
+  exclude_templates: true
+  exclude_disabled: true
+
+partition:
+  initial_size_buckets:
+    - [0, 9]
+    - [10, 99]
+    - [100, 999]
+    - [1000, 9999]
+    - [10000, 99999]
+    - [100000, 999999]
+    - [1000000, null]
+
+  star_buckets:
+    - [0, 0]
+    - [1, 1]
+    - [2, 5]
+    - [6, 10]
+    - [11, 50]
+    - [51, 100]
+    - [101, 1000]
+    - [1001, null]
+
+output:
+  sampled_days: "data/raw/sampled_days.csv"
+  collection_summary: "data/raw/collection_summary.csv"
+  partition_summary: "data/raw/partition_summary.csv"
+  candidates_dir: "data/raw/candidates"
+
+  filter_state: "data/processed/02_filter_state.sqlite3"
+  preclone_candidates: "data/processed/preclone_candidates.csv"
+  filter_summary: "data/processed/filter_summary.csv"
+
+  clone_state: "data/processed/03_clone_state.sqlite3"
+  clone_results: "data/processed/clone_results.csv"
+  selected_repositories: "data/processed/selected_repositories.csv"
+  repositories_dir: "data/repositories"
+
+  analysis_state: "data/processed/04_state.sqlite3"
+  repository_metrics: "data/processed/04_repository_metrics.csv"
+  test_artifacts: "data/processed/04_test_artifacts.csv"
+
+
+
+
+#for 02
+
+filtering:
+  random_seed: 20260821
+
+  # 03でのclone失敗等に備えて10,000件より多く確保
+  preclone_target_per_cohort: 12000
+
+  min_human_contributors: 1
+  max_human_contributors: 5
+
+  # Repository nameでは比較的広く除外
+  name_keywords:
+    - assignment
+    - homework
+    - coursework
+    - student
+    - students
+    - exercise
+    - lecture
+    - tutorial
+    - example
+    - examples
+    - demo
+    - challenge
+    - guide
+    - leetcode
+    - hackerrank
+    - codewars
+    - advent-of-code
+    - advent of code
+
+  # Description / topics / README冒頭では限定的に除外
+  text_keywords:
+    - assignment
+    - homework
+    - coursework
+    - student project
+    - student assignment
+    - programming exercise
+    - programming exercises
+    - coding exercise
+    - coding exercises
+    - course assignment
+    - course project
+    - class assignment
+    - class project
+    - python tutorial
+    - programming tutorial
+    - learn python
+    - learning python
+    - leetcode
+    - hackerrank
+    - codewars
+    - advent-of-code
+    - advent of code
+
+  # READMEから最初の実質的なテキスト行を探す際の上限
+  readme_scan_lines: 100
+
+
+
+
+
+
+
+#for 03
+
+cloning:
+  target_per_cohort: 10000
+
+  workers: 8
+  timeout_seconds: 300
+  archive_timeout_seconds: 300
+
+  min_free_gb: 100
+
+  cooldown_seconds:
+    - 120
+    - 300
+    - 600
+
+  exclude_dirs:
+    - .git
+    - .venv
+    - venv
+    - env
+    - .env
+    - site-packages
+    - vendor
+    - vendors
+    - build
+    - dist
+    - node_modules
+    - __pycache__
+    - .tox
+    - .nox
+    - .mypy_cache
+    - .pytest_cache
+
+
+
+
+
+#for 04
+analysis:
+  workers: 4
+  max_ast_file_mb: 5
+  max_text_file_mb: 5
+
+  exclude_dirs:
+    - .git
+    - .venv
+    - venv
+    - env
+    - .env
+    - site-packages
+    - vendor
+    - vendors
+    - build
+    - dist
+    - node_modules
+    - __pycache__
+    - .tox
+    - .nox
+    - .mypy_cache
+    - .pytest_cache

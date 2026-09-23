@@ -1,0 +1,9 @@
+metric,contemporary_n,contemporary_count,contemporary_rate,ai_explicit_n,ai_explicit_count,ai_explicit_rate,contemporary_median,ai_explicit_median
+Conventional tests,10000,1640.0,0.164,30,13.0,0.43333333333333335,,
+Strict tests,10000,1294.0,0.1294,30,12.0,0.4,,
+Other QA,10000,702.0,0.0702,30,8.0,0.26666666666666666,,
+Production-code reference,1640,1133.0,0.6908536585365853,13,8.0,0.6153846153846154,,
+Explicit oracle,1640,1072.0,0.6536585365853659,13,10.0,0.7692307692307693,,
+Python LOC,10000,,,30,,,332.0,1920.5
+Commit count,9996,,,30,,,5.0,14.5
+Development span days,9996,,,30,,,0.8837152777777778,29.081041666666668
